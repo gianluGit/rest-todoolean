@@ -67,16 +67,18 @@ function addElement() {
 
 function delElement() {
 
+
   $(document).on('click', 'i.fas', function() {
     var xDel = $(this);
-    var id = xDel.data();
+    var id = xDel.data('id');
     console.log(id);
 
     $.ajax({
       url: `http://157.230.17.132:3025/todos/${id}`,
       method: 'DELETE',
       success: function(data) {
-        console.log(data);
+        getList();
+
       },
       error: function(err) {
         console.log('err', err);
@@ -92,5 +94,5 @@ function delElement() {
 $(document).ready(function() {
   getList();
   addElement();
-  // delElement();
+  delElement();
 });
